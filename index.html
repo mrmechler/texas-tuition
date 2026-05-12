@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TexasTuition.com — Pay In-State Tuition at Texas Universities</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --burnt-orange: #BF5700;
+    --burnt-orange-dark: #8B3E00;
+    --burnt-orange-light: #F5E6D6;
+    --cream: #FAF7F2;
+    --warm-white: #FFFEF9;
+    --charcoal: #1C1A17;
+    --charcoal-mid: #3D3A34;
+    --muted: #7A7568;
+    --border: #E5E0D5;
+    --limestone: #EDE9E1;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(255,254,249,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: var(--burnt-orange);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-logo span {
+    color: var(--charcoal);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--charcoal-mid);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--burnt-orange); }
+
+  .nav-cta {
+    background: var(--burnt-orange) !important;
+    color: white !important;
+    padding: 0.5rem 1.25rem;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--burnt-orange-dark) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 68px 5% 0;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    right: -80px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(191,87,0,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--burnt-orange);
+    background: var(--burnt-orange-light);
+    padding: 0.35rem 0.85rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--burnt-orange);
+  }
+
+  .hero-sub {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: var(--charcoal-mid);
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--burnt-orange);
+    color: white;
+    padding: 0.9rem 2rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.01em;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--burnt-orange-dark); transform: translateY(-1px); }
+
+  .btn-secondary {
+    color: var(--charcoal);
+    padding: 0.9rem 2rem;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: 1.5px solid var(--border);
+    background: white;
+    transition: border-color 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-secondary:hover { border-color: var(--burnt-orange); transform: translateY(-1px); }
+
+  .hero-stat-row {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .hero-stat strong {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--burnt-orange);
+    line-height: 1;
+  }
+
+  .hero-stat span {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+    display: block;
+  }
+
+  .hero-visual {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 2rem 0;
+  }
+
+  /* Property card */
+  .prop-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    transition: transform 0.25s, box-shadow 0.25s;
+    animation: slideUp 0.6s ease both;
+    cursor: pointer;
+  }
+
+  .prop-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 36px rgba(0,0,0,0.1);
+  }
+
+  .prop-card:nth-child(2) {
+    animation-delay: 0.15s;
+    margin-left: 2rem;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .prop-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    background: var(--limestone);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .prop-img-placeholder {
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(135deg, var(--limestone) 0%, #D5CFC4 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    position: relative;
+  }
+
+  .prop-img-placeholder::after {
+    content: '🏠';
+    position: absolute;
+    font-size: 3rem;
+    opacity: 0.25;
+  }
+
+  .prop-body {
+    padding: 1rem 1.25rem 1.25rem;
+  }
+
+  .prop-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--burnt-orange);
+    background: var(--burnt-orange-light);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    display: inline-block;
+    margin-bottom: 0.6rem;
+  }
+
+  .prop-address {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 0.3rem;
+  }
+
+  .prop-sub {
+    font-size: 0.82rem;
+    color: var(--muted);
+    display: flex;
+    gap: 1rem;
+  }
+
+  .prop-sub span::before { margin-right: 4px; }
+
+  /* SAVINGS BANNER */
+  .savings-band {
+    background: var(--burnt-orange);
+    color: white;
+    padding: 1.5rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .savings-band .label {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  .savings-band .amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+  }
+
+  .savings-band .divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.3);
+  }
+
+  /* SECTIONS */
+  section { padding: 6rem 5%; }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--burnt-orange);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--charcoal);
+    margin-bottom: 1.25rem;
+  }
+
+  .section-sub {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--charcoal-mid);
+    max-width: 560px;
+  }
+
+  /* HOW IT WORKS */
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2px;
+    margin-top: 3.5rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .how-step {
+    background: white;
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: background 0.2s;
+  }
+
+  .how-step:hover { background: var(--cream); }
+
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--burnt-orange-light);
+    line-height: 1;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+  }
+
+  .step-num::after {
+    content: attr(data-n);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.8rem;
+    color: var(--burnt-orange);
+  }
+
+  .how-step h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 0.75rem;
+  }
+
+  .how-step p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  /* TUITION COMPARISON */
+  .comparison-section {
+    background: var(--cream);
+  }
+
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+    max-width: 700px;
+  }
+
+  .tuition-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tuition-card.featured {
+    border: 2px solid var(--burnt-orange);
+  }
+
+  .tuition-card.featured::before {
+    content: 'After Residency';
+    position: absolute;
+    top: 1rem;
+    right: -2rem;
+    background: var(--burnt-orange);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.3rem 3rem;
+    transform: rotate(35deg);
+  }
+
+  .tuition-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .tuition-school {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tuition-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--charcoal);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .tuition-amount.green { color: #2D6A2D; }
+  .tuition-amount.red { color: #A03020; }
+
+  .tuition-period {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .tuition-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .tuition-items li {
+    font-size: 0.83rem;
+    color: var(--charcoal-mid);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .tuition-items li::before {
+    content: '✓';
+    color: var(--burnt-orange);
+    font-weight: 700;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  .savings-callout {
+    background: var(--burnt-orange-light);
+    border-left: 3px solid var(--burnt-orange);
+    border-radius: 0 8px 8px 0;
+    padding: 1.25rem 1.5rem;
+    margin-top: 2rem;
+    max-width: 700px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.05rem;
+    color: var(--burnt-orange-dark);
+    line-height: 1.65;
+  }
+
+  /* PROPERTIES */
+  .properties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .listing-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+
+  .listing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.09);
+  }
+
+  .listing-img {
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(135deg, #C8C0B2 0%, #A89F93 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .listing-img::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .listing-img-label {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .listing-img-label .icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+    opacity: 0.5;
+  }
+
+  .listing-tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--burnt-orange);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 3px;
+  }
+
+  .listing-body {
+    padding: 1.5rem;
+  }
+
+  .listing-address {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 0.35rem;
+  }
+
+  .listing-city {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+    font-weight: 500;
+  }
+
+  .listing-features {
+    display: flex;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .listing-feature {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .listing-feature strong {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--charcoal);
+  }
+
+  .listing-feature span {
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .listing-tuition-note {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--burnt-orange-light);
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 1.25rem;
+    font-size: 0.84rem;
+    color: var(--burnt-orange-dark);
+    font-weight: 500;
+  }
+
+  .listing-tuition-note::before {
+    content: '✓';
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .listing-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: var(--charcoal);
+    color: white;
+    padding: 0.85rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .listing-btn:hover { background: var(--burnt-orange); }
+
+  /* ELIGIBILITY */
+  .eligibility-section { background: var(--charcoal); color: white; }
+
+  .eligibility-section .section-label { color: #F0915A; }
+  .eligibility-section .section-title { color: white; }
+  .eligibility-section .section-sub { color: rgba(255,255,255,0.65); }
+
+  .req-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .req-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 2rem 1.75rem;
+    transition: background 0.2s;
+  }
+
+  .req-card:hover { background: rgba(255,255,255,0.08); }
+
+  .req-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--burnt-orange);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .req-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: white;
+  }
+
+  .req-card p {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* LEAD FORM */
+  .form-section {
+    background: var(--cream);
+  }
+
+  .form-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .form-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+  }
+
+  .form-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-card p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 1.75rem;
+    line-height: 1.6;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--charcoal-mid);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.75rem 1rem;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--charcoal);
+    background: white;
+    transition: border-color 0.2s;
+    outline: none;
+    width: 100%;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--burnt-orange);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 90px; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--burnt-orange);
+    color: white;
+    padding: 1rem;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0.02em;
+    margin-top: 0.5rem;
+  }
+
+  .form-submit:hover { background: var(--burnt-orange-dark); transform: translateY(-1px); }
+
+  .form-disclaimer {
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 1rem;
+    line-height: 1.5;
+  }
+
+  .form-benefits {
+    padding-top: 1rem;
+  }
+
+  .form-benefits h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 1rem;
+  }
+
+  .benefit-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .benefit-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .benefit-dot {
+    width: 28px;
+    height: 28px;
+    background: var(--burnt-orange-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .benefit-text strong {
+    display: block;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 0.25rem;
+  }
+
+  .benefit-text span {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* SCHOOLS */
+  .schools-section { background: white; }
+
+  .schools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .school-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: border-color 0.2s, transform 0.2s;
+    background: white;
+  }
+
+  .school-card:hover {
+    border-color: var(--burnt-orange);
+    transform: translateY(-2px);
+  }
+
+  .school-initial {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--burnt-orange);
+    margin: 0 auto 1rem;
+    border: 1.5px solid var(--burnt-orange-light);
+  }
+
+  .school-card h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 0.3rem;
+  }
+
+  .school-card p {
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--charcoal);
+    color: rgba(255,255,255,0.6);
+    padding: 4rem 5% 2.5rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-brand span { color: var(--burnt-orange); }
+
+  .footer-tagline {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    max-width: 280px;
+  }
+
+  .footer-col h5 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 1.25rem;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .footer-col ul a {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-col ul a:hover { color: white; }
+
+  .footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-content { animation: fadeIn 0.7s ease both; }
+  .hero-visual { animation: fadeIn 0.7s ease 0.2s both; }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; padding-top: calc(68px + 2rem); }
+    .hero-visual { display: none; }
+    .form-wrap { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .comparison-grid { grid-template-columns: 1fr; max-width: 360px; }
+    .nav-links { display: none; }
+    .hero-stat-row { gap: 1.5rem; flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Texas<span>Tuition</span>.com</a>
+  <ul class="nav-links">
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#tuition">Savings</a></li>
+    <li><a href="#eligibility">Eligibility</a></li>
+    <li><a href="#contact" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Austin, Texas · Near UT Campus</div>
+    <h1 class="hero-title">
+      Stop Paying<br>Out-of-State<br><em>Tuition Rates</em>
+    </h1>
+    <p class="hero-sub">
+      Establish Texas residency through a strategic property purchase near UT Austin — and save tens of thousands in tuition. We show you exactly how.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">See Available Properties</a>
+      <a href="#how-it-works" class="btn-secondary">How It Works →</a>
+    </div>
+    <div class="hero-stat-row">
+      <div class="hero-stat">
+        <strong>$33K+</strong>
+        <span>Avg. Annual Savings</span>
+      </div>
+      <div class="hero-stat">
+        <strong>12 Mo.</strong>
+        <span>To Establish Residency</span>
+      </div>
+      <div class="hero-stat">
+        <strong>UT &amp; More</strong>
+        <span>Texas Universities</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="prop-card">
+      <div class="prop-img-placeholder">
+        <span class="icon" style="font-size:2.5rem;opacity:0.3;">🏡</span>
+      </div>
+      <div class="prop-body">
+        <div class="prop-badge">Featured Listing</div>
+        <div class="prop-address">5300 Guadalupe St</div>
+        <div class="prop-sub">
+          <span>Austin, TX 78751</span>
+          <span>· 0.4 mi to UT</span>
+        </div>
+      </div>
+    </div>
+    <div class="prop-card">
+      <div class="prop-img-placeholder">
+        <span style="font-size:2.5rem;opacity:0.3;">🏘️</span>
+      </div>
+      <div class="prop-body">
+        <div class="prop-badge">Featured Listing</div>
+        <div class="prop-address">4205 Speedway</div>
+        <div class="prop-sub">
+          <span>Austin, TX 78751</span>
+          <span>· Walkable to Campus</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SAVINGS BAND -->
+<div class="savings-band">
+  <div>
+    <div class="label">Out-of-State (UT Austin)</div>
+    <div class="amount">$44,908 / yr</div>
+  </div>
+  <div class="divider"></div>
+  <div>
+    <div class="label">In-State (UT Austin)</div>
+    <div class="amount">$11,688 / yr</div>
+  </div>
+  <div class="divider"></div>
+  <div>
+    <div class="label">Your Potential Savings</div>
+    <div class="amount" style="color:#FFD580;">$33,220 / yr</div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <span class="section-label">The Process</span>
+  <h2 class="section-title">Four Steps to<br>In-State Tuition</h2>
+  <p class="section-sub">Texas has clear residency requirements. With the right property and proper documentation, the path to in-state tuition is straightforward.</p>
+
+  <div class="how-grid">
+    <div class="how-step">
+      <div class="step-num" data-n="1">1</div>
+      <h3>Purchase or Lease a Texas Property</h3>
+      <p>Establish a domicile in Texas by purchasing or leasing a residential property. Owning property near UT Austin gives you a permanent Texas address and builds equity.</p>
+    </div>
+    <div class="how-step">
+      <div class="step-num" data-n="2">2</div>
+      <h3>Live in Texas for 12 Months</h3>
+      <p>Texas requires a continuous 12-month residency immediately before enrollment. Your student must live at the Texas address, not merely own or rent it.</p>
+    </div>
+    <div class="how-step">
+      <div class="step-num" data-n="3">3</div>
+      <h3>Establish Domicile Intent</h3>
+      <p>Get a Texas driver's license, register your vehicle, register to vote, and file taxes as a Texas resident. These actions demonstrate intent to make Texas your permanent home.</p>
+    </div>
+    <div class="how-step">
+      <div class="step-num" data-n="4">4</div>
+      <h3>Apply for Reclassification</h3>
+      <p>Submit a residency reclassification application to your Texas university. Once approved, your tuition drops to in-state rates — saving you up to $29,500 per year.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TUITION COMPARISON -->
+<section id="tuition" class="comparison-section">
+  <span class="section-label">The Numbers</span>
+  <h2 class="section-title">What You Actually Save</h2>
+  <p class="section-sub">At UT Austin, the gap between in-state and out-of-state tuition is over $29,000 per year. Over four years, that's more than $118,000.</p>
+
+  <div class="comparison-grid">
+    <div class="tuition-card">
+      <div class="tuition-label">Out-of-State</div>
+      <div class="tuition-school">UT Austin</div>
+      <div class="tuition-amount red">$44,908</div>
+      <div class="tuition-period">per year (tuition + fees)</div>
+      <ul class="tuition-items">
+        <li>Paid by non-Texas residents</li>
+        <li>Applies first year of enrollment</li>
+        <li>4-year total: ~$179,632</li>
+      </ul>
+    </div>
+    <div class="tuition-card featured">
+      <div class="tuition-label">In-State</div>
+      <div class="tuition-school">UT Austin</div>
+      <div class="tuition-amount green">$11,688</div>
+      <div class="tuition-period">per year (tuition + fees)</div>
+      <ul class="tuition-items">
+        <li>Qualified Texas residents only</li>
+        <li>After 12-month residency</li>
+        <li>4-year total: ~$46,752</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="savings-callout">
+    <strong>Bottom line:</strong> A family that establishes Texas residency through a strategic property purchase near UT could save over $132,000 in tuition across four years — while also building equity in Austin real estate.
+  </div>
+</section>
+
+<!-- PROPERTIES -->
+<section id="properties">
+  <span class="section-label">Featured Listings</span>
+  <h2 class="section-title">Properties That Qualify<br>for Texas Residency</h2>
+  <p class="section-sub">Both properties are in the 78751 zip code — steps from UT Austin, perfectly positioned to establish Texas residency and qualify for in-state tuition.</p>
+
+  <div class="properties-grid">
+    <!-- Property 1 -->
+    <div class="listing-card">
+      <div class="listing-img">
+        <div class="listing-tag">Available</div>
+        <div class="listing-img-label">
+          <span class="icon">🏡</span>
+          5300 Guadalupe St
+        </div>
+      </div>
+      <div class="listing-body">
+        <div class="listing-address">5300 Guadalupe St</div>
+        <div class="listing-city">Austin, TX 78751 · Hyde Park Corridor</div>
+        <div class="listing-features">
+          <div class="listing-feature">
+            <strong>0.4 mi</strong>
+            <span>to UT Campus</span>
+          </div>
+          <div class="listing-feature">
+            <strong>78751</strong>
+            <span>Zip Code</span>
+          </div>
+          <div class="listing-feature">
+            <strong>In-State</strong>
+            <span>Eligible</span>
+          </div>
+        </div>
+        <div class="listing-tuition-note">Qualifies for Texas in-state tuition residency</div>
+        <button class="listing-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Request Property Info</button>
+      </div>
+    </div>
+
+    <!-- Property 2 -->
+    <div class="listing-card">
+      <div class="listing-img">
+        <div class="listing-tag">Available</div>
+        <div class="listing-img-label">
+          <span class="icon">🏘️</span>
+          4205 Speedway
+        </div>
+      </div>
+      <div class="listing-body">
+        <div class="listing-address">4205 Speedway</div>
+        <div class="listing-city">Austin, TX 78751 · North Campus</div>
+        <div class="listing-features">
+          <div class="listing-feature">
+            <strong>Walkable</strong>
+            <span>to UT Campus</span>
+          </div>
+          <div class="listing-feature">
+            <strong>78751</strong>
+            <span>Zip Code</span>
+          </div>
+          <div class="listing-feature">
+            <strong>In-State</strong>
+            <span>Eligible</span>
+          </div>
+        </div>
+        <div class="listing-tuition-note">Qualifies for Texas in-state tuition residency</div>
+        <button class="listing-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Request Property Info</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ELIGIBILITY -->
+<section id="eligibility" class="eligibility-section">
+  <span class="section-label">Requirements</span>
+  <h2 class="section-title" style="color:white;">Texas Residency<br>Requirements</h2>
+  <p class="section-sub">Under Texas Education Code §54.052, these are the primary criteria the state uses to determine residency classification for tuition purposes.</p>
+
+  <div class="req-grid">
+    <div class="req-card">
+      <div class="req-icon">📍</div>
+      <h3>12-Month Physical Presence</h3>
+      <p>You must reside continuously in Texas for the 12 months immediately preceding the census date of the semester in which you enroll.</p>
+    </div>
+    <div class="req-card">
+      <div class="req-icon">🏠</div>
+      <h3>Established Domicile</h3>
+      <p>Owning or leasing a home in Texas and residing in it is one of the strongest indicators of domicile intent recognized by Texas universities.</p>
+    </div>
+    <div class="req-card">
+      <div class="req-icon">🪪</div>
+      <h3>Texas Driver's License</h3>
+      <p>Obtaining a Texas DL within 30 days of establishing residency, and surrendering your prior state's license, is a key documentation requirement.</p>
+    </div>
+    <div class="req-card">
+      <div class="req-icon">🗳️</div>
+      <h3>Voter Registration</h3>
+      <p>Registering to vote in Texas demonstrates your intent to make Texas your permanent home — a factor weighed heavily in residency determinations.</p>
+    </div>
+    <div class="req-card">
+      <div class="req-icon">💼</div>
+      <h3>Texas Tax Filing</h3>
+      <p>Filing state and federal taxes as a Texas resident (or with a Texas address) provides official documentation of your domicile intent.</p>
+    </div>
+    <div class="req-card">
+      <div class="req-icon">🚗</div>
+      <h3>Vehicle Registration</h3>
+      <p>Transferring your vehicle registration to Texas within 30 days of establishing residence further supports your residency classification application.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SCHOOLS -->
+<section class="schools-section">
+  <span class="section-label">Where It Works</span>
+  <h2 class="section-title">Texas Universities</h2>
+  <p class="section-sub">In-state tuition applies at all Texas public universities once residency is established. These are the most popular destinations for families we work with.</p>
+
+  <div class="schools-grid">
+    <div class="school-card">
+      <div class="school-initial">UT</div>
+      <h4>UT Austin</h4>
+      <p>In-state: $11,688/yr</p>
+    </div>
+    <div class="school-card">
+      <div class="school-initial">A&amp;M</div>
+      <h4>Texas A&amp;M</h4>
+      <p>In-state: $12,995/yr</p>
+    </div>
+    <div class="school-card">
+      <div class="school-initial">TTU</div>
+      <h4>Texas Tech</h4>
+      <p>In-state: $11,852/yr</p>
+    </div>
+    <div class="school-card">
+      <div class="school-initial">UH</div>
+      <h4>U of Houston</h4>
+      <p>In-state: $9,717/yr</p>
+    </div>
+    <div class="school-card">
+      <div class="school-initial">TCU</div>
+      <h4>TCU</h4>
+      <p>Private — residency may apply</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section id="contact" class="form-section">
+  <div class="form-wrap">
+    <div>
+      <span class="section-label">Get Started</span>
+      <h2 class="section-title">Ready to Establish<br>Texas Residency?</h2>
+      <p class="section-sub" style="margin-bottom:2.5rem;">Talk to one of our Texas real estate specialists. We'll walk you through the properties and the residency process — no obligation.</p>
+
+      <ul class="benefit-list">
+        <li class="benefit-item">
+          <div class="benefit-dot">🏠</div>
+          <div class="benefit-text">
+            <strong>Expert Property Guidance</strong>
+            <span>We specialize in properties that meet Texas residency requirements — near the universities that matter to you.</span>
+          </div>
+        </li>
+        <li class="benefit-item">
+          <div class="benefit-dot">📋</div>
+          <div class="benefit-text">
+            <strong>Residency Documentation Support</strong>
+            <span>We provide a complete checklist of every document you'll need for a successful reclassification application.</span>
+          </div>
+        </li>
+        <li class="benefit-item">
+          <div class="benefit-dot">💰</div>
+          <div class="benefit-text">
+            <strong>Real Estate as an Investment</strong>
+            <span>Your Austin property builds equity while your student saves on tuition. It's a financial strategy, not just a housing decision.</span>
+          </div>
+        </li>
+        <li class="benefit-item">
+          <div class="benefit-dot">⚡</div>
+          <div class="benefit-text">
+            <strong>Fast Response</strong>
+            <span>We respond to every inquiry within one business day. The sooner you start, the sooner the 12-month clock begins.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="form-card">
+      <h3>Contact Our Team</h3>
+      <p>Tell us about your student and we'll find the right property and path to Texas residency.</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Jane">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Smith">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="jane@email.com">
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="(555) 000-0000">
+      </div>
+
+      <div class="form-group">
+        <label>Target University</label>
+        <select>
+          <option value="">Select a university...</option>
+          <option>UT Austin</option>
+          <option>Texas A&M</option>
+          <option>Texas Tech</option>
+          <option>University of Houston</option>
+          <option>Other Texas University</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Enrollment Timeline</label>
+        <select>
+          <option value="">When does your student enroll?</option>
+          <option>Fall 2025</option>
+          <option>Spring 2026</option>
+          <option>Fall 2026</option>
+          <option>Fall 2027 or later</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Message (Optional)</label>
+        <textarea placeholder="Tell us about your situation — current state, budget, any questions..."></textarea>
+      </div>
+
+      <button class="form-submit">Send My Inquiry →</button>
+      <p class="form-disclaimer">We respect your privacy. Your information is never shared or sold. A licensed Texas real estate agent will contact you directly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Texas<span>Tuition</span>.com</div>
+      <p class="footer-tagline">Helping families establish Texas residency through strategic real estate — and save tens of thousands in university tuition.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Resources</h5>
+      <ul>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#eligibility">Eligibility Requirements</a></li>
+        <li><a href="#tuition">Tuition Savings</a></li>
+        <li><a href="#properties">Featured Properties</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Universities</h5>
+      <ul>
+        <li><a href="#">UT Austin</a></li>
+        <li><a href="#">Texas A&M</a></li>
+        <li><a href="#">Texas Tech</a></li>
+        <li><a href="#">U of Houston</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Disclaimer</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 TexasTuition.com · All Rights Reserved</span>
+    <span>Licensed Texas Real Estate · Information purposes only — not legal advice</span>
+  </div>
+</footer>
+
+<script>
+  document.querySelector('.form-submit').addEventListener('click', function(e) {
+    e.preventDefault();
+    this.textContent = '✓ Inquiry Sent — We\'ll be in touch within 1 business day';
+    this.style.background = '#2D6A2D';
+    this.disabled = true;
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.how-step, .req-card, .listing-card, .school-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(16px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
