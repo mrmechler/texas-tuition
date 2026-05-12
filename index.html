@@ -1030,6 +1030,73 @@
     gap: 1rem;
   }
 
+  .footer-disclaimer-box {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 1.75rem 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-disclaimer-box p {
+    font-size: 0.78rem;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .footer-de-bar {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-de-left {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .de-logo {
+    height: 36px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .footer-de-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .footer-de-info span {
+    font-size: 0.78rem;
+    color: #333;
+    line-height: 1.4;
+  }
+
+  .footer-de-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.3rem;
+  }
+
+  .footer-de-links a {
+    font-size: 0.78rem;
+    color: #333;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+
+  .footer-de-links a:hover { color: var(--burnt-orange); }
+
   /* Animations */
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
@@ -1068,7 +1135,6 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-eyebrow">Austin, Texas · Near UT Campus</div>
     <h1 class="hero-title">
       Stop Paying<br>Out-of-State<br><em>Tuition Rates</em>
     </h1>
@@ -1081,7 +1147,7 @@
     </div>
     <div class="hero-stat-row">
       <div class="hero-stat">
-        <strong>$33K+</strong>
+        <strong>$33K+*</strong>
         <span>Avg. Annual Savings</span>
       </div>
       <div class="hero-stat">
@@ -1097,12 +1163,10 @@
 
   <div class="hero-visual">
     <div class="prop-card">
-      <div class="prop-img-placeholder">
-        <span class="icon" style="font-size:2.5rem;opacity:0.3;">🏡</span>
-      </div>
+      <img src="alma-guadalupe-condos.png" alt="5300 Guadalupe Street" style="width:100%;height:180px;object-fit:cover;display:block;">
       <div class="prop-body">
         <div class="prop-badge">Featured Listing</div>
-        <div class="prop-address">5300 Guadalupe St</div>
+        <div class="prop-address">5300 Guadalupe Street</div>
         <div class="prop-sub">
           <span>Austin, TX 78751</span>
           <span>· 0.4 mi to UT</span>
@@ -1110,9 +1174,7 @@
       </div>
     </div>
     <div class="prop-card">
-      <div class="prop-img-placeholder">
-        <span style="font-size:2.5rem;opacity:0.3;">🏘️</span>
-      </div>
+      <img src="speedway-condos.png" alt="4205 Speedway" style="width:100%;height:180px;object-fit:cover;display:block;">
       <div class="prop-body">
         <div class="prop-badge">Featured Listing</div>
         <div class="prop-address">4205 Speedway</div>
@@ -1129,17 +1191,17 @@
 <div class="savings-band">
   <div>
     <div class="label">Out-of-State (UT Austin)</div>
-    <div class="amount">$44,908 / yr</div>
+    <div class="amount">$44,908* / yr</div>
   </div>
   <div class="divider"></div>
   <div>
     <div class="label">In-State (UT Austin)</div>
-    <div class="amount">$11,688 / yr</div>
+    <div class="amount">$11,688* / yr</div>
   </div>
   <div class="divider"></div>
   <div>
     <div class="label">Your Potential Savings</div>
-    <div class="amount" style="color:#FFD580;">$33,220 / yr</div>
+    <div class="amount" style="color:#FFD580;">$33,220* / yr</div>
   </div>
 </div>
 
@@ -1183,23 +1245,23 @@
     <div class="tuition-card">
       <div class="tuition-label">Out-of-State</div>
       <div class="tuition-school">UT Austin</div>
-      <div class="tuition-amount red">$44,908</div>
+      <div class="tuition-amount red">$44,908*</div>
       <div class="tuition-period">per year (tuition + fees)</div>
       <ul class="tuition-items">
         <li>Paid by non-Texas residents</li>
         <li>Applies first year of enrollment</li>
-        <li>4-year total: ~$179,632</li>
+        <li>4-year total: ~$179,632*</li>
       </ul>
     </div>
     <div class="tuition-card featured">
       <div class="tuition-label">In-State</div>
       <div class="tuition-school">UT Austin</div>
-      <div class="tuition-amount green">$11,688</div>
+      <div class="tuition-amount green">$11,688*</div>
       <div class="tuition-period">per year (tuition + fees)</div>
       <ul class="tuition-items">
         <li>Qualified Texas residents only</li>
         <li>After 12-month residency</li>
-        <li>4-year total: ~$46,752</li>
+        <li>4-year total: ~$46,752*</li>
       </ul>
     </div>
   </div>
@@ -1213,20 +1275,17 @@
 <section id="properties">
   <span class="section-label">Featured Listings</span>
   <h2 class="section-title">Properties That Qualify<br>for Texas Residency</h2>
-  <p class="section-sub">Both properties are in the 78751 zip code — steps from UT Austin, perfectly positioned to establish Texas residency and qualify for in-state tuition.</p>
+  <p class="section-sub">Both properties are in the 78751 zip code — close to UT Austin, perfectly positioned to establish Texas residency and qualify for in-state tuition.</p>
 
   <div class="properties-grid">
     <!-- Property 1 -->
     <div class="listing-card">
-      <div class="listing-img">
+      <div class="listing-img" style="padding:0;background:none;">
         <div class="listing-tag">Available</div>
-        <div class="listing-img-label">
-          <span class="icon">🏡</span>
-          5300 Guadalupe St
-        </div>
+        <img src="alma-guadalupe-condos.png" alt="5300 Guadalupe Street" style="width:100%;height:220px;object-fit:cover;display:block;">
       </div>
       <div class="listing-body">
-        <div class="listing-address">5300 Guadalupe St</div>
+        <div class="listing-address">5300 Guadalupe Street</div>
         <div class="listing-city">Austin, TX 78751 · Hyde Park Corridor</div>
         <div class="listing-features">
           <div class="listing-feature">
@@ -1249,12 +1308,9 @@
 
     <!-- Property 2 -->
     <div class="listing-card">
-      <div class="listing-img">
+      <div class="listing-img" style="padding:0;background:none;">
         <div class="listing-tag">Available</div>
-        <div class="listing-img-label">
-          <span class="icon">🏘️</span>
-          4205 Speedway
-        </div>
+        <img src="speedway-condos.png" alt="4205 Speedway" style="width:100%;height:220px;object-fit:cover;display:block;">
       </div>
       <div class="listing-body">
         <div class="listing-address">4205 Speedway</div>
@@ -1488,6 +1544,25 @@
       </ul>
     </div>
   </div>
+
+  <div class="footer-disclaimer-box">
+    <p>* Tuition figures are based on published 2024–2025 undergraduate tuition and mandatory fees at the University of Texas at Austin and are subject to change. Savings estimates represent the difference between in-state and out-of-state tuition rates and do not include room and board, books, or other living expenses. Residency reclassification is subject to Texas Education Code §54.052 and individual university determination. This website is for informational purposes only and does not constitute legal, tax, or financial advice. Consult a qualified attorney or tax advisor regarding your specific situation.</p>
+  </div>
+
+  <div class="footer-de-bar">
+    <div class="footer-de-left">
+      <img src="douglas-elliman.png" alt="Douglas Elliman Real Estate" class="de-logo">
+      <div class="footer-de-info">
+        <span>ATXREALESTATE.COM is owned and operated by Michael Mechler, Broker Associate</span>
+        <span>Douglas Elliman Real Estate · 1717 W 6th Street, Suite 190, Austin, TX 78703</span>
+      </div>
+    </div>
+    <div class="footer-de-links">
+      <a href="https://atxrealestate.com/information-about-brokerage-services.pdf" target="_blank">Information About Brokerage Services</a>
+      <a href="https://atxrealestate.com/consumer-protection-notice.pdf" target="_blank">Consumer Protection Notice</a>
+    </div>
+  </div>
+
   <div class="footer-bottom">
     <span>© 2025 TexasTuition.com · All Rights Reserved</span>
     <span>Licensed Texas Real Estate · Information purposes only — not legal advice</span>
