@@ -43,7 +43,7 @@
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     padding: 0 5%;
-    height: 68px;
+    height: 78px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -56,10 +56,22 @@
     color: var(--burnt-orange);
     text-decoration: none;
     letter-spacing: -0.01em;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
   }
 
   .nav-logo span {
     color: var(--charcoal);
+  }
+
+  .nav-tagline {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    text-transform: uppercase;
   }
 
   .nav-links {
@@ -1203,7 +1215,7 @@
 
   /* MOBILE */
   @media (max-width: 768px) {
-    .hero { grid-template-columns: 1fr; padding-top: calc(68px + 2rem); }
+    .hero { grid-template-columns: 1fr; padding-top: calc(78px + 2rem); }
     .hero-visual { display: none; }
     .form-wrap { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -1225,7 +1237,10 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">Texas<span>Tuition</span>.com</a>
+  <a href="#" class="nav-logo">
+    <span style="color:var(--burnt-orange);font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;letter-spacing:-0.01em;">Texas<span style="color:var(--charcoal);">Tuition</span>.com</span>
+    <span class="nav-tagline">Establish Residency · Save Thousands</span>
+  </a>
   <ul class="nav-links">
     <li><a href="#how-it-works">How It Works</a></li>
     <li><a href="#properties">Properties</a></li>
