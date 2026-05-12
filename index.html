@@ -89,6 +89,66 @@
 
   .nav-cta:hover { background: var(--burnt-orange-dark) !important; }
 
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+
+  .nav-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--charcoal);
+    border-radius: 2px;
+    transition: all 0.25s;
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 68px;
+    left: 0;
+    right: 0;
+    background: rgba(255,254,249,0.98);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 5%;
+    z-index: 99;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu a {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--charcoal-mid);
+    text-decoration: none;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s;
+  }
+
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover { color: var(--burnt-orange); }
+
+  .mobile-menu .mobile-cta {
+    margin-top: 1rem;
+    background: var(--burnt-orange);
+    color: white !important;
+    text-align: center;
+    padding: 0.9rem !important;
+    border-radius: 4px;
+    border-bottom: none !important;
+    font-weight: 600 !important;
+  }
+
   /* HERO */
   .hero {
     min-height: 100vh;
@@ -735,7 +795,7 @@
 
   .req-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
     margin-top: 3rem;
   }
@@ -1144,12 +1204,18 @@
     .hero { grid-template-columns: 1fr; padding-top: calc(68px + 2rem); }
     .hero-visual { display: none; }
     .form-wrap { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-    .comparison-grid { grid-template-columns: 1fr; max-width: 360px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .comparison-grid { grid-template-columns: 1fr; max-width: 100%; }
     .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
     .hero-stat-row { gap: 1.25rem; flex-wrap: wrap; }
     .hero-stat strong { font-size: 1.6rem; }
     .properties-grid { grid-template-columns: 1fr; }
+    .req-grid { grid-template-columns: 1fr; }
+    .schools-grid { grid-template-columns: 1fr 1fr; }
+    .how-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    section { padding: 4rem 5%; }
   }
 </style>
 </head>
@@ -1165,7 +1231,18 @@
     <li><a href="#eligibility">Eligibility</a></li>
     <li><a href="#contact" class="nav-cta">Get Started</a></li>
   </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#how-it-works" onclick="closeMobileMenu()">How It Works</a>
+  <a href="#properties" onclick="closeMobileMenu()">Properties</a>
+  <a href="#tuition" onclick="closeMobileMenu()">Savings</a>
+  <a href="#eligibility" onclick="closeMobileMenu()">Eligibility</a>
+  <a href="#contact" class="mobile-cta" onclick="closeMobileMenu()">Get Started</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1177,7 +1254,7 @@
       Establish Texas residency through a strategic property purchase near UT Austin — and save tens of thousands in tuition. We show you exactly how.
     </p>
     <div class="hero-actions">
-      <a href="#contact" class="btn-primary">See Available Properties</a>
+      <a href="#properties" class="btn-primary">See Available Properties</a>
       <a href="#how-it-works" class="btn-secondary">How It Works →</a>
     </div>
     <div class="hero-stat-row">
@@ -1190,7 +1267,7 @@
         <span>To Establish Residency</span>
       </div>
       <div class="hero-stat">
-        <strong>UT &amp; More</strong>
+        <strong>5</strong>
         <span>Texas Universities</span>
       </div>
     </div>
@@ -1265,7 +1342,7 @@
     <div class="how-step">
       <div class="step-num" data-n="4">4</div>
       <h3>Apply for Reclassification</h3>
-      <p>Submit a residency reclassification application to your Texas university. Once approved, your tuition drops to in-state rates — saving you up to $29,500 per year.</p>
+      <p>Submit a residency reclassification application to your Texas university. Once approved, your tuition drops to in-state rates — saving you over $33,000 per year.</p>
     </div>
   </div>
 </section>
@@ -1274,7 +1351,7 @@
 <section id="tuition" class="comparison-section">
   <span class="section-label">The Numbers</span>
   <h2 class="section-title">What You Actually Save</h2>
-  <p class="section-sub">At UT Austin, the gap between in-state and out-of-state tuition is over $29,000 per year. Over four years, that's more than $118,000.</p>
+  <p class="section-sub">At UT Austin, the gap between in-state and out-of-state tuition is over $33,000 per year. Over four years, that's more than $132,000.</p>
 
   <div class="comparison-grid">
     <div class="tuition-card">
@@ -1352,7 +1429,7 @@
       <div class="listing-body">
         <div class="listing-address">4205 Speedway</div>
         <div class="listing-city">Austin, TX 78751 · North Campus</div>
-        <div class="listing-price">Starting at $149,300</div>
+        <div class="listing-price">Condos Under $199K</div>
         <div class="listing-features">
           <div class="listing-feature">
             <strong>Walkable</strong>
@@ -1376,6 +1453,7 @@
 </section>
 
 <!-- ELIGIBILITY -->
+<section id="eligibility" class="eligibility-section">
   <span class="section-label">Requirements</span>
   <h2 class="section-title" style="color:white;">Texas Residency<br>Requirements</h2>
   <p class="section-sub">Under Texas Education Code §54.052, these are the primary criteria the state uses to determine residency classification for tuition purposes.</p>
@@ -1442,7 +1520,7 @@
       <p>In-state: $9,717/yr</p>
     </div>
     <div class="school-card">
-      <div class="school-initial">TSU</div>
+      <div class="school-initial">TXST</div>
       <h4>Texas State</h4>
       <p>In-state: $11,450/yr</p>
     </div>
@@ -1614,6 +1692,14 @@
 </footer>
 
 <script>
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+  }
+
+  document.getElementById('hamburger').addEventListener('click', function() {
+    document.getElementById('mobile-menu').classList.toggle('open');
+  });
+
   function requestInfo(propertyName) {
     document.getElementById('form-subject').value = 'Property Inquiry: ' + propertyName;
     const formSection = document.getElementById('contact');
@@ -1657,9 +1743,10 @@
       if (entry.isIntersecting) {
         entry.target.style.opacity = '1';
         entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
 
   document.querySelectorAll('.how-step, .req-card, .listing-card, .school-card').forEach(el => {
     el.style.opacity = '0';
