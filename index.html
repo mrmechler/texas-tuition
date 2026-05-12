@@ -1067,7 +1067,6 @@
     width: auto;
     display: block;
     flex-shrink: 0;
-    filter: invert(1) brightness(2);
   }
 
   .footer-de-info {
@@ -1128,6 +1127,7 @@
     .comparison-grid { grid-template-columns: 1fr; max-width: 360px; }
     .nav-links { display: none; }
     .hero-stat-row { gap: 1.5rem; flex-wrap: wrap; }
+    .properties-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -1315,11 +1315,7 @@
           </div>
         </div>
         <div class="listing-tuition-note">Qualifies for Texas in-state tuition residency</div>
-        <button class="listing-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Request Property Info</button>
-      </div>
-    </div>
-
-    <!-- Property 2 -->
+        <button class="listing-btn" onclick="requestInfo('5300 Guadalupe Street')">Request Property Info</button>
     <div class="listing-card">
       <div class="listing-img" style="padding:0;background:none;">
         <div class="listing-tag">Available</div>
@@ -1343,13 +1339,7 @@
           </div>
         </div>
         <div class="listing-tuition-note">Qualifies for Texas in-state tuition residency</div>
-        <button class="listing-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Request Property Info</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ELIGIBILITY -->
+        <button class="listing-btn" onclick="requestInfo('4205 Speedway')">Request Property Info</button>
 <section id="eligibility" class="eligibility-section">
   <span class="section-label">Requirements</span>
   <h2 class="section-title" style="color:white;">Texas Residency<br>Requirements</h2>
@@ -1465,6 +1455,7 @@
     </div>
 
     <form class="form-card" action="https://formspree.io/f/mrbjzvyq" method="POST" id="contact-form">
+      <input type="hidden" name="_subject" id="form-subject" value="New Inquiry — TexasTuition.com">
       <h3>Contact Our Team</h3>
       <p>Tell us about your student and we'll find the right property and path to Texas residency.</p>
 
@@ -1506,10 +1497,11 @@
         <label for="timeline">Enrollment Timeline</label>
         <select id="timeline" name="enrollment_timeline">
           <option value="">When does your student enroll?</option>
-          <option>Fall 2025</option>
           <option>Spring 2026</option>
           <option>Fall 2026</option>
-          <option>Fall 2027 or later</option>
+          <option>Spring 2027</option>
+          <option>Fall 2027</option>
+          <option>Fall 2028 or later</option>
         </select>
       </div>
 
@@ -1587,6 +1579,16 @@
 </footer>
 
 <script>
+  function requestInfo(propertyName) {
+    document.getElementById('form-subject').value = 'Property Inquiry: ' + propertyName;
+    const formSection = document.getElementById('contact');
+    formSection.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => {
+      const heading = document.querySelector('#contact h2');
+      if (heading) heading.innerHTML = 'Interested in<br>' + propertyName + '?';
+    }, 600);
+  }
+
   const form = document.getElementById('contact-form');
   const successMsg = document.getElementById('form-success');
   const submitBtn = form.querySelector('.form-submit');
